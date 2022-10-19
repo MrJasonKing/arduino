@@ -1,5 +1,6 @@
-#include <LiquidCrystal.h>
-LiquidCrystal mylcd(13,12,11,10,9,8);
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 int a=2,b=3,c=4,d=5,e=6,f=7,g=A0;
 int COUNT;
 int red=A1,yellow=A2,green=A3;
@@ -15,9 +16,11 @@ void setup()
   pinMode(e,OUTPUT);
   pinMode(f,OUTPUT);
   pinMode(g,OUTPUT);
-  mylcd.begin(16,2);
-  mylcd.print("Hello!");
-  mylcd.home();
+  lcd.begin(16, 2);
+  lcd.backlight();
+  lcd.clear();
+  lcd.setCursor(4,0);
+  lcd.print("Hello");
 }
  
 void loop()
@@ -26,27 +29,27 @@ void loop()
  analogWrite(yellow,0);
  analogWrite(green,0);
 
-mylcd.clear();
+lcd.clear();
  analogWrite(yellow,255);
- mylcd.print("Wait");
+ lcd.print("Wait");
  timer(3);           
  
- mylcd.clear();    
+ lcd.clear();    
  analogWrite(yellow,0);
  analogWrite(red,255);
- mylcd.print("Stop");
+ lcd.print("Stop");
  timer(5);
  
- mylcd.clear();
+ lcd.clear();
  analogWrite(red,0);
  analogWrite(yellow,255);
- mylcd.print("Wait");
+ lcd.print("Wait");
  timer(3);
  
- mylcd.clear();
+ lcd.clear();
  analogWrite(yellow,0);
  analogWrite(green,255);
- mylcd.print("Go");
+ lcd.print("Go");
  timer(5);    
 }
 
