@@ -4,8 +4,8 @@
   Pin assignment for 5611AH
      G  F com A  B
    __|__|__|__|__|__
-  | 10  9  8  7  6  |
-  |  1  2  3  4  5  |
+  | 10  9 grd 7  6  |
+  |  1  2 grd 4  5  |
    --|--|--|--|--|--
      E  D com C  P
      
